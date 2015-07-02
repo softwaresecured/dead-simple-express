@@ -1,23 +1,11 @@
-this is our readme
+# Dead Simple Express
 
-Dependencies left out of default
+An express js boilerplate starter project for server side web applications
 
-- docxtemplater
-- docxtemplater-image-module
-- image-size
-- mime-types
-- lusca
-- mongoose
-- mongoose-rbac
-- mongoose-text-search
-- multer
-- nessus-api
-- node-libnmap
-- passport
-- passport-github
-- passport-google-oauth
-- passport-linkedin-oauth2
-- serve-favicon
-- slug
-- underscore.string
-- xml2js
+Uses connect-assets for its asset pipeline and pulls dependencies from bower
+
+Tests are done with mocha, chai and supertest
+
+Gulp is used to start nodemon and browser-sync
+
+License is MIT
