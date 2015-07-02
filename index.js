@@ -10,11 +10,22 @@ var error = require('./config/middleware/error');
 
 var app = express();
 
+// connect our db
+// require('./config/db');
 // boostrap our models
 var modelsDir = path.join(__dirname, 'app', 'models');
 fs.readdirSync(modelsDir).forEach(function(file) {
   if (file.indexOf('.js')) {
     require(path.join(modelsDir, file));
+  }
+});
+
+// start our job queue and load task handlers
+require('./config/kue');
+var tasksDir = path.join(__dirname, 'config', 'tasks');
+fs.readdirSync(tasksDir).forEach(function(file) {
+  if (file.indexOf('.js')) {
+    require(path.join(tasksDir, file));
   }
 });
 

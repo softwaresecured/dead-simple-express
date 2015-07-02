@@ -1,3 +1,7 @@
+###Warning:
+
+This branch expects a redis server to be running on your system
+
 # Dead Simple Express
 
 An express js boilerplate starter project for server side web applications

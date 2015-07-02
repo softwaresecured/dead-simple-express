@@ -28,6 +28,7 @@
     "express": "^4.13.0",
     "express-validator": "^2.13.0",
     "jade": "^1.11.0",
+    "kue": "^0.9.3",
     "less": "^2.5.1",
     "lodash": "^3.10.0",
     "method-override": "^2.3.3",

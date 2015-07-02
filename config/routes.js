@@ -12,5 +12,6 @@ var home = require('../app/controllers/home');
 module.exports = function(app) {
 
   app.get('/', home.index);
+  app.get('/jobs', home.jobs);
 
 };
