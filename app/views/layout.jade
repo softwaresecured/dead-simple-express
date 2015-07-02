@@ -1,0 +1,11 @@
+doctype html
+html(lang="en")
+  head
+    include header
+  body
+    include partials/navigation
+
+    .container
+      block content
+
+    != js('application')
