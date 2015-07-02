@@ -14,30 +14,29 @@ module.exports.index = function(req, res, next) {
 
 module.exports.jobs = function(req, res, next) {
 
-  // var task = 'email';
+  var task = 'email';
 
-  // var data =  {
-  //   name: 'email',
-  //   title: 'Account renewal required',
-  //   to: 'tj@learnboost.com',
-  //   template: 'renewal-email'
-  // };
+  var data =  {
+    name: 'email',
+    title: 'Account renewal required',
+    to: 'tj@learnboost.com',
+    template: 'renewal-email'
+  };
 
-  // var job = kue.create(task, data).save();
+  var job = kue.create(task, data).save();
 
-  // job.on('complete', function(result) {
-  //   console.log(result);
-  //   console.log('Job', job.id, 'with name', job.data.name, 'is done');
-  // });
-  // job.on('failed', function() {
-  //   console.log('Job', job.id, 'with name', job.data.name, 'has failed');
-  // });
+  job.on('complete', function(result) {
+    console.log(result);
+    console.log('Job', job.id, 'with name', job.data.name, 'is done');
+  });
+  job.on('failed', function() {
+    console.log('Job', job.id, 'with name', job.data.name, 'has failed');
+  });
 
   res.render('home/index', {
     title: 'Jobs',
     description: 'Jobs'
   });
 };
-
 
 
