@@ -1,8 +1,8 @@
 'use strict';
 
 var gulp = require('gulp');
-var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
+var browserSync = require('browser-sync');
 
 var BROWSER_SYNC_RELOAD_DELAY = 4000;
 
@@ -39,20 +39,3 @@ gulp.task('nodemon', function(cb) {
 
   });
 });
-
-gulp.task('browser-sync', ['nodemon'], function() {
-
-  browserSync.init({
-    files: ['public/**/*.*'],
-
-    proxy: 'http://localhost:3000',
-
-    port: 4000,
-
-    browser: ['google-chrome']
-  });
-
-});
-
-
-gulp.task('default', ['browser-sync']);
