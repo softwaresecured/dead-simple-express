@@ -80,9 +80,9 @@ module.exports.getSignup = function(req, res) {
 // Create a new local account.
 //
 module.exports.postSignup = function(req, res, next) {
-  req.assert('email', 'Email is not valid').isEmail();
-  req.assert('password', 'Password must be at least 4 characters long').len(4);
-  req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+  req.checkBody('email', 'Email is not valid').isEmail();
+  req.checkBody('password', 'Password must be at least 4 characters long').len(4);
+  req.checkBody('confirmPassword', 'Passwords do not match').equals(req.body.password);
 
   var errors = req.validationErrors();
 
@@ -91,18 +91,22 @@ module.exports.postSignup = function(req, res, next) {
     return res.redirect('/signup');
   }
 
+  var email =  req.body.email;
+  var password =  req.body.password;
+
   var user = new User({
-    email: req.body.email,
-    password: req.body.password
+    email: email,
+    password: password
   });
 
-  User.findOne({email: req.body.email}, function(err, existingUser) {
+  User.findOne({email: email}, function(err, existingUser) {
     if (existingUser) {
       req.flash('errors', { msg: 'Account with that email address already exists.' });
       return res.redirect('/signup');
     }
     user.save(function(err) {
       if (err) { return next(err); }
+
       req.logIn(user, function(err) {
         if (err) { return next(err); }
         res.redirect('/');

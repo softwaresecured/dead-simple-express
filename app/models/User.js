@@ -28,9 +28,6 @@ var userSchema = new mongoose.Schema({
     picture: {type: String, default: '', trim: true}
   },
 
-  resetPasswordToken: String,
-  resetPasswordExpires: Date,
-
   created_on: {type: Date, default: new Date()},
   last_modified: {type: Date}
 });
@@ -45,10 +42,13 @@ userSchema.index({email: 1}, {unique: true});
 userSchema.pre('save', function(next) {
   var user = this;
   if (!user.isModified('password')) { return next(); }
+
   bcrypt.genSalt(10, function(err, salt) {
     if (err) { return next(err); }
+
     bcrypt.hash(user.password, salt, null, function(err, hash) {
       if (err) { return next(err); }
+
       user.password = hash;
       next();
     });
