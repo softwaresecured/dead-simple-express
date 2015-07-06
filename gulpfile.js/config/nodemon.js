@@ -21,7 +21,7 @@ module.exports = {
 
     changedFiles.forEach(function(file) {
       if (path.extname(file) === '.js' && !~tasks.indexOf('jshint') && !~tasks.indexOf('jscs') && !~tasks.indexOf('jscpd')) {
-        tasks.push('jscpd', 'lint', 'jscs');
+        tasks.push('jshint', 'jscs');
       }
     });
 

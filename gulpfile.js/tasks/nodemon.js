@@ -6,9 +6,9 @@ var browserSync = require('browser-sync');
 
 var config = require('../config/nodemon');
 
-var BROWSER_SYNC_RELOAD_DELAY = 500;
+var BROWSER_SYNC_RELOAD_DELAY = 2500;
 
-gulp.task('nodemon', ['jscpd', 'jshint', 'jscs'], function(cb) {
+gulp.task('nodemon', ['jshint', 'jscs'], function(cb) {
   var called = false;
 
   function onStart() {
