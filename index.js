@@ -7,7 +7,6 @@ var express = require('express');
 var passport = require('passport');
 
 var config = require('./config');
-var error = require('./config/middleware/error');
 
 var app = express();
 

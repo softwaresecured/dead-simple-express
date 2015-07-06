@@ -1,0 +1,41 @@
+doctype html
+html(lang="en")
+  head
+    include header
+  body
+
+    .container
+
+      // Jumbotron
+      .jumbotron
+        h1
+          i.fa.fa-frown-o.red
+          |  #{title}
+        p.lead
+          | We couldn't find what you're looking for on
+          em
+            span#display-domain
+          | .
+        p
+          a.btn.btn-default.btn-lg(onclick='javascript:checkSite();')
+            span.green Take Me To The Homepage
+          script(type='text/javascript').
+            function checkSite(){
+            var currentSite = window.location.hostname;
+            window.location = "http://" + currentSite;
+            }
+
+      .body-content
+        .row
+          .col-md-6
+            h2 What happened?
+            p.lead
+              | A 404 error status implies that the file or page that you're looking for could not be found.
+          .col-md-6
+            h2 What can I do?
+            p.lead If you're a site vistor
+            p
+              | Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.
+            p.lead If you're the site owner
+            p
+              | Please check that you're in the right place and get in touch with your website provider if you believe this to be an error.

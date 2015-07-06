@@ -6,6 +6,9 @@ html(lang="en")
     include partials/navigation
 
     .container
+      include partials/flash
       block content
+
+    include partials/footer
 
     != js('application')

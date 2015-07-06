@@ -1,59 +1,36 @@
-nav.navbar.navbar-default
+nav.navbar.navbar-default.navbar-static-top
   .container
-    // Brand and toggle get grouped for better mobile display
     .navbar-header
-      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='#') Brand
-  //-   // Collect the nav links, forms, and other content for toggling
-  //-   #bs-example-navbar-collapse-1.collapse.navbar-collapse
-  //-     ul.nav.navbar-nav
-  //-       li.active
-  //-         a(href='#')
-  //-           | Link
-  //-           span.sr-only (current)
-  //-       li
-  //-         a(href='#') Link
-  //-       li.dropdown
-  //-         a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-  //-           | Dropdown
-  //-           span.caret
-  //-         ul.dropdown-menu
-  //-           li
-  //-             a(href='#') Action
-  //-           li
-  //-             a(href='#') Another action
-  //-           li
-  //-             a(href='#') Something else here
-  //-           li.divider(role='separator')
-  //-           li
-  //-             a(href='#') Separated link
-  //-           li.divider(role='separator')
-  //-           li
-  //-             a(href='#') One more separated link
-  //-     form.navbar-form.navbar-left(role='search')
-  //-       .form-group
-  //-         input.form-control(type='text', placeholder='Search')
-  //-       button.btn.btn-default(type='submit') Submit
-  //-     ul.nav.navbar-nav.navbar-right
-  //-       li
-  //-         a(href='#') Link
-  //-       li.dropdown
-  //-         a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-  //-           | Dropdown
-  //-           span.caret
-  //-         ul.dropdown-menu
-  //-           li
-  //-             a(href='#') Action
-  //-           li
-  //-             a(href='#') Another action
-  //-           li
-  //-             a(href='#') Something else here
-  //-           li.divider(role='separator')
-  //-           li
-  //-             a(href='#') Separated link
-  //-   // /.navbar-collapse
-  //- // /.container-fluid
+      a.navbar-brand(href='/')
+        i.fa.fa-cube
+        | Project name
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li(class=title=='Home'?'active':undefined)
+          a(href='/') Home
+      ul.nav.navbar-nav.navbar-right
+        if !user
+          li(class=title=='Login'?'active':undefined)
+            a(href='/login') Login
+          li(class=title=='Create Account'?'active':undefined)
+            a(href='/signup') Create Account
+        else
+          li.dropdown(class=title=='Account Management'?'active':undefined)
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              if user.profile.picture
+                img(src='#{user.profile.picture}')
+              else
+                img(src='#{user.gravatar(60)}')
+              | #{user.profile.name || user.email || user.id}&nbsp;
+              i.caret
+            ul.dropdown-menu
+              li
+                a(href='/account') My Account
+              li.divider
+              li
+                a(href='/logout') Logout

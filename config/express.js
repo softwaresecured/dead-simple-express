@@ -15,15 +15,12 @@ var connectAssets = require('connect-assets');
 var helmet = require('helmet');
 var hpp = require('hpp');
 var contentLength = require('express-content-length-validator');
-
 var express_enforces_ssl = require('express-enforces-ssl');
-
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')({session: session});
 var flash = require('express-flash');
 var lusca = require('lusca');
-
 var _ = require('lodash');
 var moment = require('moment');
 
@@ -35,7 +32,7 @@ module.exports = function(app, passport) {
 
   var assets = path.join(config.root, 'public');
 
-  var port = process.env.PORT || 3000;
+  var port = config.port;
   var environment = process.env.NODE_ENV || 'development';
 
   var hour = 3600000;
