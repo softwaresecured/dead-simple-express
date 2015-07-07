@@ -4,9 +4,12 @@
 
 'use strict';
 
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 var GithubStrategy = require('passport-github').Strategy;
+
 var config = require('../');
+
+var mongoose = require('../mongoose');
 var User = mongoose.model('User');
 
 module.exports = new GithubStrategy(config.github, function(req, accessToken, refreshToken, profile, done) {

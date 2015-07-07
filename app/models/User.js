@@ -5,6 +5,8 @@ var bcrypt = require('bcrypt-nodejs');
 
 var lastMod = require('./lastMod');
 
+var db = require('../../config/mongoose');
+
 var accessTokenSchema = new mongoose.Schema({
   accessToken: {type: String},
   kind: {type: String}
@@ -42,7 +44,6 @@ userSchema.index({email: 1}, {unique: true});
 userSchema.pre('save', function(next) {
   var user = this;
   if (!user.isModified('password')) { return next(); }
-
   bcrypt.genSalt(10, function(err, salt) {
     if (err) { return next(err); }
 
@@ -65,4 +66,4 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
   });
 };
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = db.model('User', userSchema);

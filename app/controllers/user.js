@@ -3,9 +3,9 @@
 var _ = require('lodash');
 var async = require('async');
 var passport = require('passport');
-var mongoose = require('mongoose');
 
-var User = mongoose.model('User');
+var db = require('../../config/mongoose');
+var User = db.model('User');
 
 var loginHeaderInfo = {
   title: 'Login',
@@ -101,12 +101,11 @@ module.exports.postSignup = function(req, res, next) {
 
   User.findOne({email: email}, function(err, existingUser) {
     if (existingUser) {
-      req.flash('errors', { msg: 'Account with that email address already exists.' });
+      req.flash('errors', {msg: 'Account with that email address already exists.'});
       return res.redirect('/signup');
     }
     user.save(function(err) {
       if (err) { return next(err); }
-
       req.logIn(user, function(err) {
         if (err) { return next(err); }
         res.redirect('/');
