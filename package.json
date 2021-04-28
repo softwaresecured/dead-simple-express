@@ -51,7 +51,7 @@
     "less": "2.5.1",
     "lodash": "^3.10.0",
     "lusca": "^1.1.1",
-    "method-override": "2.3.3",
+    "method-override": "2.3.10",
     "moment": "2.10.3",
     "mongoose": "^4.0.6",
     "morgan": "^1.6.0",
